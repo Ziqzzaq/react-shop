@@ -1,6 +1,6 @@
-import {Item} from "../state/shopState";
+import { Item } from '../state/shopState';
 
 export interface PreviewCollectionProps {
     title: string;
-    items: Item[]
+    items: Item[];
 }

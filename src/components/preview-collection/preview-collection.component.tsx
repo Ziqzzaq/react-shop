@@ -2,19 +2,18 @@ import React from 'react';
 
 import './preview-collection.scss';
 
-import {PreviewCollectionProps} from "../../models/props/PreviewCollectionProps";
-import CollectionItem from "../collection-item/collection-item.component";
+import { PreviewCollectionProps } from '../../models/props/PreviewCollectionProps';
+import CollectionItem from '../collection-item/collection-item.component';
 
-const PreviewCollection: React.FC<PreviewCollectionProps> = ({title, items}) => (
+const PreviewCollection: React.FC<PreviewCollectionProps> = ({ title, items }) => (
     <div className="collection-preview">
         <h1 className="title">{title.toUpperCase()}</h1>
         <div className="preview">
-            {
-                items.filter((item, idx) => idx < 4)
-                    .map(({id, ...otherItemProps}) => (
-                    <CollectionItem key={id} {...otherItemProps}/>
-                ))
-            }
+            {items
+                .filter((item, idx) => idx < 4)
+                .map(({ id, ...otherItemProps }) => (
+                    <CollectionItem key={id} {...otherItemProps} />
+                ))}
         </div>
     </div>
 );

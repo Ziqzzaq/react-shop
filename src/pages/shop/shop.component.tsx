@@ -4,7 +4,7 @@ import SHOP_DATA from '../../mock/shop.data';
 import { ShopState } from '../../models/state/shopState';
 
 import './shop.styles.scss';
-import PreviewCollection from "../../components/preview-collection/preview-collection.component";
+import PreviewCollection from '../../components/preview-collection/preview-collection.component';
 
 class ShopPage extends React.Component<ShopPageProps, ShopState> {
     constructor(props: ShopPageProps) {
@@ -16,14 +16,12 @@ class ShopPage extends React.Component<ShopPageProps, ShopState> {
     }
 
     render() {
-        const {collections} = this.state;
+        const { collections } = this.state;
         return (
-            <div className='shop-page'>
-                {
-                    collections.map(({title, items, id}) => (
-                        <PreviewCollection key={id} title={title} items={items}/>
-                    ))
-                }
+            <div className="shop-page">
+                {collections.map(({ title, items, id }) => (
+                    <PreviewCollection key={id} title={title} items={items} />
+                ))}
             </div>
         );
     }
