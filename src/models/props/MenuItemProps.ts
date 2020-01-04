@@ -1,6 +1,6 @@
-import {RouteComponentProps} from "react-router-dom";
+import { RouteComponentProps } from 'react-router-dom';
 
-export interface MenuItemProps extends RouteComponentProps<any>{
+export interface MenuItemProps extends RouteComponentProps<any> {
     title: string;
     imageUrl: string;
     size?: string;

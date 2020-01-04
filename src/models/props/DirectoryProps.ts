@@ -1,3 +1,1 @@
-export interface DirectoryProps {
-
-}
+export interface DirectoryProps {}
