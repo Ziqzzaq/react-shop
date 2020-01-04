@@ -27,7 +27,7 @@
     },
     "husky": {
         "hooks": {
-            "pre-commit": "npm run format"
+            "pre-commit": "pretty-quick --staged"
         }
     },
     "eslintConfig": {
@@ -47,6 +47,7 @@
     },
     "devDependencies": {
         "husky": "^3.1.0",
-        "prettier": "1.19.1"
+        "prettier": "1.19.1",
+        "pretty-quick": "^2.0.1"
     }
 }
