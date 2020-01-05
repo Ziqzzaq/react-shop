@@ -1,5 +1,8 @@
-import firebase from 'firebase';
-
 export interface HeaderProps {
-    currentUser: firebase.User | null;
+    currentUser: {
+        id: string;
+        createAt: Date | null;
+        displayName: string;
+        email: string;
+    } | null;
 }

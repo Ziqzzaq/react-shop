@@ -5,25 +5,48 @@ import { Route, Switch } from 'react-router-dom';
 import ShopPage from './pages/shop/shop.component';
 import Header from './components/header/header.component';
 import SignInAndSignUp from './pages/sign-in-and-sign-up/sign-in-and-sign-up.component';
-import { auth } from './firebase/firebase.utils';
+import { auth, createUserProfileDocument } from './helpers/firebase/firebase.helper';
 import { AppState } from './models/state/AppState';
 import { AppProps } from './models/props/AppProps';
 import { Unsubscribe } from 'firebase';
+import { DocumentFirebaseRef } from './types/CustomFirebaseTypes';
 
 class App extends React.Component<AppProps, AppState> {
     constructor(props: AppProps) {
         super(props);
 
         this.state = {
-            currentUser: null
+            currentUser: {
+                id: '',
+                displayName: '',
+                email: '',
+                createAt: null
+            }
         };
     }
 
     unsubscribeFromAuth!: Unsubscribe;
 
     componentDidMount(): void {
-        this.unsubscribeFromAuth = auth.onAuthStateChanged((user) => {
-            this.setState({ currentUser: user });
+        this.unsubscribeFromAuth = auth.onAuthStateChanged(async (user) => {
+            if (user) {
+                const userRef: DocumentFirebaseRef = await createUserProfileDocument(
+                    user
+                );
+
+                userRef?.onSnapshot((snapShot) => {
+                    this.setState({
+                        currentUser: {
+                            id: snapShot.id,
+                            createAt: snapShot.data()?.createAt.toDate(),
+                            email: snapShot.data()?.email,
+                            displayName: snapShot.data()?.displayName
+                        }
+                    });
+                });
+            } else {
+                this.setState({ currentUser: null });
+            }
         });
     }
 

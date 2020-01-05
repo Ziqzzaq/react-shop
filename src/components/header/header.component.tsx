@@ -4,7 +4,7 @@ import './header.styles.scss';
 import { Link } from 'react-router-dom';
 
 import { ReactComponent as Logo } from '../../assets/crown.svg';
-import { auth } from '../../firebase/firebase.utils';
+import { auth } from '../../helpers/firebase/firebase.helper';
 import { HeaderProps } from '../../models/props/HeaderProps';
 
 const Header: React.FC<HeaderProps> = ({ currentUser }) => (
