@@ -1,4 +1,4 @@
-import { Item } from '../state/shopState';
+import { Item } from '../state/ShopState';
 
 export interface PreviewCollectionProps {
     title: string;

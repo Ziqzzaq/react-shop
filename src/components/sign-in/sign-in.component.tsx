@@ -5,6 +5,7 @@ import FormInput from '../form-input/form-input.component';
 
 import './sign-in.styles.scss';
 import Button from '../button/button.component';
+import { signInWithGoogle } from '../../firebase/firebase.utils';
 
 class SignIn extends React.Component<SignInProps, SignInState> {
     constructor(props: SignInProps) {
@@ -57,7 +58,12 @@ class SignIn extends React.Component<SignInProps, SignInState> {
                         required
                     />
 
-                    <Button type="submit">Sign in</Button>
+                    <div className="buttons">
+                        <Button type="submit">Sign in</Button>
+                        <Button onClick={signInWithGoogle} isGoogleSignIn>
+                            Sign in with Google
+                        </Button>
+                    </div>
                 </form>
             </div>
         );

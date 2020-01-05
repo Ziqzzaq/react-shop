@@ -1,7 +1,7 @@
 import React from 'react';
 import { ShopPageProps } from '../../models/props/ShopPageProps';
 import SHOP_DATA from '../../mock/shop.data';
-import { ShopState } from '../../models/state/shopState';
+import { ShopState } from '../../models/state/ShopState';
 
 import './shop.styles.scss';
 import PreviewCollection from '../../components/preview-collection/preview-collection.component';
