@@ -1,13 +1,14 @@
 import { UserActionsTypes } from './userActions.types';
-import { AppState } from '../../models/state/AppState';
+import { UserState } from '../../models/state/AppState';
+import { UserActions } from './userActions.enum';
 
-const INITIAL_STATE: AppState = {
+const INITIAL_STATE: UserState = {
     currentUser: null
 };
 
 export const userReducer = (state = INITIAL_STATE, action: UserActionsTypes) => {
     switch (action.type) {
-        case 'SET_CURRENT_USER':
+        case UserActions.setCurrentUser:
             return {
                 ...state,
                 currentUser: action.payload

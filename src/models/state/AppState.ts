@@ -5,6 +5,10 @@ export interface User {
     email: string;
 }
 
-export interface AppState {
+export interface UserState {
     currentUser: User | null;
+}
+
+export interface AppState {
+    userState: UserState;
 }

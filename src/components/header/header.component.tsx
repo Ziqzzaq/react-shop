@@ -36,6 +36,6 @@ const Header: React.FC<HeaderProps> = ({ currentUser }) => (
 );
 
 const mapStateToProps = (state: any) => ({
-    currentUser: state.user.currentUser
+    currentUser: state.userState.currentUser
 });
 export default connect(mapStateToProps)(Header);

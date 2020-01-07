@@ -1,21 +1,23 @@
 import React, { useEffect } from 'react';
 import './App.css';
 import HomePage from './pages/homepage/homepage.component';
-import { Route, Switch } from 'react-router-dom';
+import { Route, Switch, Redirect } from 'react-router-dom';
 import ShopPage from './pages/shop/shop.component';
 import Header from './components/header/header.component';
-import SignInAndSignUp from './pages/sign-in-and-sign-up/sign-in-and-sign-up.component';
 import { auth, createUserProfileDocument } from './helpers/firebase/firebase.helper';
-import { User } from './models/state/AppState';
-import { AppProps } from './models/props/AppProps';
+import { AppState, User } from './models/state/AppState';
 import { Unsubscribe } from 'firebase';
 import { DocumentFirebaseRef } from './types/CustomFirebaseTypes';
 import { connect } from 'react-redux';
 import { setCurrentUser } from './redux/user/user.actions';
 import { Dispatch } from 'redux';
 import { UserActionsTypes } from './redux/user/userActions.types';
+import SignInAndSignUp from './pages/sign-in-and-sign-up/sign-in-and-sign-up.component';
 
-const App = ({ setCurrentUser }: AppProps<typeof mapDispatchToProps>) => {
+type AppProps = ReturnType<typeof mapStateToProps> &
+    ReturnType<typeof mapDispatchToProps>;
+
+const App: React.FC<AppProps> = ({ setCurrentUser, currentUser }) => {
     useEffect(() => {
         let unsubscribeFromAuth!: Unsubscribe;
         unsubscribeFromAuth = auth.onAuthStateChanged(async (user) => {
@@ -25,7 +27,6 @@ const App = ({ setCurrentUser }: AppProps<typeof mapDispatchToProps>) => {
                 );
 
                 userRef?.onSnapshot((snapShot) => {
-                    console.log(snapShot);
                     setCurrentUser({
                         id: snapShot.id,
                         createAt: snapShot.data()?.createAt.toDate(),
@@ -40,7 +41,7 @@ const App = ({ setCurrentUser }: AppProps<typeof mapDispatchToProps>) => {
         return () => {
             unsubscribeFromAuth();
         };
-    });
+    }, [setCurrentUser]);
 
     return (
         <>
@@ -48,14 +49,24 @@ const App = ({ setCurrentUser }: AppProps<typeof mapDispatchToProps>) => {
             <Switch>
                 <Route exact path="/" component={HomePage} />
                 <Route exact path="/shop" component={ShopPage} />
-                <Route exact path="/sign-in" component={SignInAndSignUp} />
+                <Route
+                    exact
+                    path="/sign-in"
+                    render={() =>
+                        currentUser ? <Redirect to="/" /> : <SignInAndSignUp />
+                    }
+                />
             </Switch>
         </>
     );
 };
 
+const mapStateToProps = (state: AppState) => ({
+    currentUser: state.userState.currentUser
+});
+
 const mapDispatchToProps = (dispatch: Dispatch<UserActionsTypes>) => ({
     setCurrentUser: (user: User | null) => dispatch(setCurrentUser(user))
 });
 
-export default connect(null, mapDispatchToProps)(App);
+export default connect(mapStateToProps, mapDispatchToProps)(App);
