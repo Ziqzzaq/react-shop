@@ -1,6 +1,6 @@
 import { UserActionsTypes } from './userActions.types';
-import { UserState } from '../../models/state/AppState';
 import { UserActions } from './userActions.enum';
+import { UserState } from '../../models/state/UserState';
 
 const INITIAL_STATE: UserState = {
     currentUser: null
@@ -13,6 +13,7 @@ export const userReducer = (state = INITIAL_STATE, action: UserActionsTypes) => 
                 ...state,
                 currentUser: action.payload
             };
+
         default:
             return state;
     }

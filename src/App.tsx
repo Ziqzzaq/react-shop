@@ -5,7 +5,7 @@ import { Route, Switch, Redirect } from 'react-router-dom';
 import ShopPage from './pages/shop/shop.component';
 import Header from './components/header/header.component';
 import { auth, createUserProfileDocument } from './helpers/firebase/firebase.helper';
-import { AppState, User } from './models/state/AppState';
+import { AppState } from './models/state/AppState';
 import { Unsubscribe } from 'firebase';
 import { DocumentFirebaseRef } from './types/CustomFirebaseTypes';
 import { connect } from 'react-redux';
@@ -13,6 +13,7 @@ import { setCurrentUser } from './redux/user/user.actions';
 import { Dispatch } from 'redux';
 import { UserActionsTypes } from './redux/user/userActions.types';
 import SignInAndSignUp from './pages/sign-in-and-sign-up/sign-in-and-sign-up.component';
+import { User } from './models/state/UserState';
 
 type AppProps = ReturnType<typeof mapStateToProps> &
     ReturnType<typeof mapDispatchToProps>;
@@ -25,7 +26,6 @@ const App: React.FC<AppProps> = ({ setCurrentUser, currentUser }) => {
                 const userRef: DocumentFirebaseRef = await createUserProfileDocument(
                     user
                 );
-
                 userRef?.onSnapshot((snapShot) => {
                     setCurrentUser({
                         id: snapShot.id,
@@ -49,13 +49,15 @@ const App: React.FC<AppProps> = ({ setCurrentUser, currentUser }) => {
             <Switch>
                 <Route exact path="/" component={HomePage} />
                 <Route exact path="/shop" component={ShopPage} />
-                <Route
-                    exact
-                    path="/sign-in"
-                    render={() =>
-                        currentUser ? <Redirect to="/" /> : <SignInAndSignUp />
-                    }
-                />
+                {currentUser ? (
+                    <Route
+                        exact
+                        path="/sign-in"
+                        render={() => <Redirect to="/" />}
+                    />
+                ) : (
+                    <Route exact path="/sign-in" component={SignInAndSignUp} />
+                )}
             </Switch>
         </>
     );

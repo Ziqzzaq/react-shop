@@ -6,10 +6,13 @@ import { ReactComponent as GoogleIcon } from '../../assets/google-icon.svg';
 const Button: React.FC<ButtonProps> = ({
     children,
     isGoogleSignIn,
+    inverted,
     ...otherProps
 }) => (
     <button
-        className={`${isGoogleSignIn ? 'google-sign-in' : ''} button`}
+        className={`${inverted ? 'inverted' : ''} ${
+            isGoogleSignIn ? 'google-sign-in' : ''
+        } button`}
         {...otherProps}
     >
         {isGoogleSignIn ? <GoogleIcon className="google-sign-in__icon" /> : null}

@@ -1,8 +1,6 @@
+import { User } from '../state/UserState';
+
 export interface HeaderProps {
-    currentUser: {
-        id: string;
-        createAt: Date | null;
-        displayName: string;
-        email: string;
-    } | null;
+    currentUser: User | null;
+    hidden: boolean;
 }
