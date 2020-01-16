@@ -1,4 +1,4 @@
-import { Item } from '../models/state/ShopState';
+import { Item } from '../pages/shop/shop.types';
 
 export const AddItemToCart = (cartItems: Item[], cartItemToAdd: any) => {
     const existingCartItem = cartItems.find(

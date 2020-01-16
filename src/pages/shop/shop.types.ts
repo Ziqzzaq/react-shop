@@ -1,3 +1,4 @@
+export interface ShopPageProps {}
 export interface Item {
     id: number;
     name: string;

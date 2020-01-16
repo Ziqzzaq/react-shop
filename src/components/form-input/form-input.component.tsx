@@ -1,7 +1,7 @@
 import React from 'react';
 
 import './form-input.styles.scss';
-import { FormInputProps } from '../../models/props/FormInputProps';
+import { FormInputProps } from './form-input.types';
 
 const FormInput: React.FC<FormInputProps> = ({
     handleChange,

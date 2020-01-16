@@ -1,6 +1,6 @@
 import React from 'react';
 import './button.styles.scss';
-import { ButtonProps } from '../../models/props/ButtonProps';
+import { ButtonProps } from './button.types';
 import { ReactComponent as GoogleIcon } from '../../assets/google-icon.svg';
 
 const Button: React.FC<ButtonProps> = ({

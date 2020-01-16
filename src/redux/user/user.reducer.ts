@@ -1,6 +1,6 @@
 import { UserActionsTypes } from './userActions.types';
 import { UserActions } from './userActions.enum';
-import { UserState } from '../../models/state/UserState';
+import { UserState } from './user.types';
 
 const INITIAL_STATE: UserState = {
     currentUser: null

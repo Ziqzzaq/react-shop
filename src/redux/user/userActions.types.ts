@@ -1,5 +1,5 @@
 import { UserActions } from './userActions.enum';
-import { User } from '../../models/state/UserState';
+import { User } from './user.types';
 
 interface SetCurrentUser {
     type: typeof UserActions.setCurrentUser;

@@ -1,6 +1,6 @@
-import { CartState } from '../../models/state/CartState';
 import { CartActionsEnum, CartActionsTypes } from './cartActions.types';
 import { AddItemToCart } from '../../helpers/cart.helper';
+import { CartState } from './cart.types';
 
 const INITIAL_STATE: CartState = {
     hidden: true,

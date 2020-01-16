@@ -6,8 +6,7 @@ import {
     auth,
     createUserProfileDocument
 } from '../../helpers/firebase/firebase.helper';
-import { SignUpState } from '../../models/state/SignUpState';
-import { SignUpProps } from '../../models/props/SignUpProps';
+import { SignUpProps, SignUpState } from './sign-up.types';
 
 class SignUp extends React.Component<SignUpProps, SignUpState> {
     constructor(props: SignUpProps) {

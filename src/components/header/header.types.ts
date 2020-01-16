@@ -1,4 +1,4 @@
-import { User } from '../state/UserState';
+import { User } from '../../redux/user/user.types';
 
 export interface HeaderProps {
     currentUser: User | null;

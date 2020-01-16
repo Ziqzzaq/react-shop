@@ -1,3 +1,5 @@
+export interface DirectoryProps {}
+
 interface MenuItem {
     title: string;
     imageUrl: string;

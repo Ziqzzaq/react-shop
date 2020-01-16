@@ -1,6 +1,5 @@
 import React from 'react';
-import { DirectoryProps } from '../../models/props/DirectoryProps';
-import { DirectoryState } from '../../models/state/DirectoryState';
+import { DirectoryProps, DirectoryState } from './directory.types';
 import MenuItem from '../menu-item/menu-item.component';
 
 import './directory.styles.scss';

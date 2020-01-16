@@ -1,5 +1,5 @@
 import React from 'react';
-import { MenuItemProps } from '../../models/props/MenuItemProps';
+import { MenuItemProps } from './menu-item.types';
 
 import './menu-item.styles.scss';
 import { withRouter } from 'react-router-dom';

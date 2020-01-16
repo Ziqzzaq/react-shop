@@ -1,5 +1,5 @@
-import { Item } from '../../models/state/ShopState';
 import { Action } from 'redux';
+import { Item } from '../../pages/shop/shop.types';
 
 export enum CartActionsEnum {
     toggleCartHiddenType = 'TOGGLE_CART_HIDDEN',

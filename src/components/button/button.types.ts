@@ -4,7 +4,8 @@ import { CartActionsEnum } from '../../redux/cart/cartActions.types';
 
 type onClickType =
     | ((item: any) => { type: CartActionsEnum; payload: any })
-    | (() => Promise<firebase.auth.UserCredential>);
+    | (() => Promise<firebase.auth.UserCredential>)
+    | (() => void);
 
 export interface ButtonProps {
     children: ReactChildren | string | never[];

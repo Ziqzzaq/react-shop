@@ -1,7 +1,7 @@
 import React from 'react';
 
 import './cart-item.styles.scss';
-import { Item } from '../../models/state/ShopState';
+import { Item } from '../../pages/shop/shop.types';
 
 interface CartItemProps {
     item: Item;

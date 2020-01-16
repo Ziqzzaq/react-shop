@@ -2,7 +2,7 @@ import React from 'react';
 
 import './preview-collection.scss';
 
-import { PreviewCollectionProps } from '../../models/props/PreviewCollectionProps';
+import { PreviewCollectionProps } from './preview-collection.types';
 import CollectionItem from '../collection-item/collection-item.component';
 
 const PreviewCollection: React.FC<PreviewCollectionProps> = ({ title, items }) => (

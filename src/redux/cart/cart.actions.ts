@@ -1,5 +1,5 @@
-import { Item } from '../../models/state/ShopState';
 import { CartActionsEnum } from './cartActions.types';
+import { Item } from '../../pages/shop/shop.types';
 
 export const toggleCartHidden = () => ({
     type: CartActionsEnum.toggleCartHiddenType

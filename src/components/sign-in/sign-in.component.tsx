@@ -1,6 +1,5 @@
 import React, { ChangeEvent, FormEvent } from 'react';
-import { SignInProps } from '../../models/props/SignInProps';
-import { SignInState } from '../../models/state/SignInState';
+import { SignInProps, SignInState } from './sign-in.types';
 import FormInput from '../form-input/form-input.component';
 
 import './sign-in.styles.scss';
