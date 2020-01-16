@@ -1,5 +1,5 @@
 import { Item } from '../../pages/shop/shop.types';
 
-export interface CheckoutItemProps {
+export interface CheckoutItemPropsType {
     cartItem: Item;
 }
